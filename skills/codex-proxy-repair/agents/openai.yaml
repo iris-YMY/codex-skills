@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex 代理重连修复"
+  short_description: "诊断并修复 Windows Codex 代理重连问题"
+  default_prompt: "使用 $codex-proxy-repair 诊断当前 Windows 上 Codex 反复重连的问题。"

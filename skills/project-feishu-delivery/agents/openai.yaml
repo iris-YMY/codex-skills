@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Feishu Delivery"
+  short_description: "Safely deliver project outputs to Feishu"
+  default_prompt: "Use $project-feishu-delivery to prepare and upload a reviewed project output to its authorized Feishu delivery folder."

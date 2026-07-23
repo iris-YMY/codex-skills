@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Codex Skill"
+  short_description: "Safely publish Codex skills and plugins"
+  default_prompt: "Use $publish-codex-skill to validate this Codex Skill, choose the right distribution format, and prepare a confirmation-gated GitHub publication plan."
