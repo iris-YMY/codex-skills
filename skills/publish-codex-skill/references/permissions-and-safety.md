@@ -2,50 +2,34 @@
 
 ## Minimum local permissions
 
-- Read the selected Skill directory and directly referenced resources.
+- Read selected Skill directories and directly referenced resources.
 - Read repository status, remotes, branches, and diffs.
 - Write only to a confirmed staging checkout or intended repository paths.
 - Create a local branch and commit only after scope is confirmed.
 
 ## Minimum GitHub permissions
 
-For publishing to an existing repository:
+For an existing repository, request only metadata read, contents read/write, and pull-request read/write on the selected repository.
 
-- Metadata: read.
-- Contents: read and write on the selected repository.
-- Pull requests: read and write.
+Add only when required and separately disclosed:
 
-Add only when required and separately approved:
-
-- Administration: create a repository or change visibility/settings.
-- Workflows: modify files under `.github/workflows`.
-- Releases: create tags or releases.
-- Organization permissions: publish inside an organization with applicable policy.
+- Administration for repository creation or visibility/settings changes.
+- Workflows for `.github/workflows` changes.
+- Releases for tags or releases.
+- Organization permissions required by organization policy.
 
 Prefer selected-repository access over account-wide or organization-wide access.
 
 ## Authentication rules
 
-Use an existing GitHub connector authorization or authenticated `gh` session. If unavailable, stop and request the normal authorization flow.
+Use an existing GitHub connector authorization or authenticated `gh` session. If unavailable, request the normal authorization flow.
 
-Never:
+Never scan credential stores, shell history, or unrelated home directories for tokens; print, persist, copy, or embed tokens; request classic PAT scopes by default; weaken repository policy; or store credentials in the Skill or repository.
 
-- scan `.env`, credential stores, shell history, or home directories for tokens;
-- print, persist, copy, or embed tokens in remote URLs;
-- request classic PAT scopes by default;
-- weaken repository or organization policy;
-- store credentials in the Skill or repository.
+## Confirmation boundary
 
-## Remote-write gates
+One exact final plan may bundle repository creation, branch push, and Draft PR creation. It must name the repository, visibility, branches, files, commit intent, and Draft PR intent. Confirmation expires when that scope changes.
 
-Require exact confirmation before:
+Require a new explicit confirmation before changing visibility/settings outside confirmed creation, changing workflow files, creating tags/releases, writing directly to the default branch, deleting remote content, or force pushing.
 
-- creating a repository;
-- changing repository visibility or settings;
-- pushing a branch;
-- creating or updating a pull request;
-- changing workflow files;
-- creating tags or releases;
-- deleting remote content or force pushing.
-
-Default to a new publication branch and Draft PR. Never force push or directly update the default branch unless the user explicitly requests it and repository policy permits it.
+Default to a publication branch and Draft PR. Never force push or directly update the default branch unless explicitly requested and permitted by repository policy.

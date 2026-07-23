@@ -1,71 +1,55 @@
 ---
 name: publish-codex-skill
-description: Validate, package, and publish a Codex Skill or Skill plugin through an explicitly selected GitHub repository and draft pull request. Use when the user asks to publish, share, open-source, back up, distribute, or update a Codex Skill on GitHub. Choose the correct distribution form, reuse skill-creator, plugin-creator, and GitHub publishing workflows, and require exact confirmation before every remote write.
+description: Validate, package, and publish one or more Codex Skills or a Skill plugin through an explicitly selected GitHub repository and Draft PR. Use when the user asks to publish, share, open-source, back up, distribute, synchronize, or update Codex Skills on GitHub. Choose source collection versus installable Plugin delivery, keep confirmation efficient, and verify remote state.
 ---
 
-# Publish a Codex Skill safely
+# Publish Codex Skills safely
 
-Read the applicable `AGENTS.md`. Treat validation, packaging, and remote publication as separate stages.
+Read the applicable `AGENTS.md`. Keep inspection, packaging, remote publication, and verification distinct.
 
-## 1. Inspect and validate
+## 1. Resolve scope
 
-1. Resolve the exact Skill directory and read its `SKILL.md` plus directly referenced resources.
-2. Use `skill-creator` guidance and run its `quick_validate.py`.
-3. Inventory files, sizes, symlinks, executable scripts, generated caches, environment files, credentials, and nested repositories.
-4. Exclude secrets, `.env`, credentials, caches, virtual environments, build outputs, and unrelated files. Never search local files for authentication tokens.
-5. Stop if the source scope is ambiguous or contains unsafe material.
+Resolve the exact source Skill directories and read each `SKILL.md` plus directly referenced resources. Treat the installed/global Skill as the source of truth unless the user selects another source.
 
-## 2. Choose the distribution form
+Choose:
 
-Use [references/publication-modes.md](references/publication-modes.md).
+- **Project repository** for project-only Skills.
+- **Source collection** for maintenance, review, and backup of one or more independent Skills.
+- **Standalone repository** for one independently maintained Skill.
+- **Plugin** only when users need installable bundled delivery, MCP configuration, connectors, hooks, apps, commands, or marketplace metadata.
 
-- Keep a project-only workflow in `.agents/skills` and publish it through that project's normal repository PR.
-- Use a source collection or standalone source repository for maintenance, review, and backup.
-- For reusable installation, multiple Skills, connectors, MCP configuration, hooks, apps, or marketplace delivery, use `plugin-creator` and publish a Plugin.
+Read [references/publication-modes.md](references/publication-modes.md) only when the choice is ambiguous. Use `plugin-creator` when Plugin packaging is selected.
 
-Do not add `README.md`, version fields, installers, or packaging files inside the Skill merely to publish it. Repository-level documentation and Plugin manifests belong outside the Skill directory.
+Keep repository documentation and Plugin manifests outside Skill directories.
 
-## 3. Confirm packaging
+## 2. Preflight
 
-Before creating a repository or packaging a Plugin, present:
+Run `scripts/preflight.ps1` for every selected Skill, passing the `skill-creator` `quick_validate.py` path. It inventories candidate files and flags structural, UTF-8, symlink, nested-repository, cache, credential-shaped, and environment-specific content without printing secret values.
 
-- source Skill path and validated name;
-- selected distribution form and reason;
-- target owner/repository and visibility;
-- proposed repository layout;
-- files that packaging will create or modify;
-- required local and GitHub permissions.
+Do not load the full `skill-creator` instructions for routine publication. Load it only when creating or restructuring a Skill, or when validation fails.
 
-Wait for explicit confirmation if packaging creates a repository, changes visibility, or writes outside the source workspace.
+Exclude secrets, `.env`, credentials, caches, virtual environments, build outputs, nested repositories, and unrelated files. Disclose environment-specific paths or internal identifiers; they may be acceptable in a confirmed private repository.
 
-## 4. Prepare the final publication plan
+## 3. Confirm one exact plan
 
-Use an existing clean checkout when available. Otherwise clone or create a bounded staging checkout. Fetch the remote before deciding whether the Skill is new or updated.
+Use an existing clean checkout when available. Otherwise clone or create a bounded staging checkout. Fetch before deciding whether each Skill is new or updated.
 
-Prepare and show:
+Present source paths, distribution form, repository and visibility, repository creation or packaging changes, branches, exact file changes, validation findings, commit/PR intent, and required permissions.
 
-- repository and visibility;
-- base and publication branch;
-- exact added, modified, and deleted files;
-- validation results;
-- commit message;
-- draft PR title and summary;
-- any workflow, binary, symlink, or permission-sensitive files.
+One explicit confirmation may authorize the listed repository creation, branch push, and Draft PR creation as one bounded transaction. Reconfirm only if scope changes or the operation adds visibility/settings changes, workflow files, releases, direct default-branch writes, force pushes, or destructive actions.
 
-Stop and wait for explicit confirmation of this exact plan. A prior packaging confirmation does not authorize GitHub writes.
+Read [references/permissions-and-safety.md](references/permissions-and-safety.md) when creating a repository, changing permissions/settings, or handling a sensitive finding.
 
-## 5. Publish through the existing GitHub workflow
+## 4. Publish
 
-After confirmation, use `github:yeet` for intentional staging, commit, branch push, and Draft PR creation. Prefer the GitHub connector for repository and PR operations; use authenticated `gh` only where connector coverage is insufficient.
+After confirmation, use `github:yeet` for intentional staging, commit, push, and Draft PR creation. Load that workflow only at this stage. Prefer the GitHub connector; use authenticated `gh` where connector coverage is insufficient.
 
-Stage only confirmed paths. Never use force push, embed credentials in URLs, read tokens from files, push directly to the default branch by default, or silently include unrelated changes.
+Stage only confirmed paths. Before retrying PR creation, query for an existing PR with the same head branch.
 
-Repository creation, visibility changes, releases, workflow-file changes, direct default-branch pushes, and destructive remote operations each require separate explicit authorization.
+If Git transport returns an ambiguous failure, do not infer success from local output. Read [references/recovery.md](references/recovery.md), verify the remote ref, and retry idempotently.
 
-## 6. Verify and report
+## 5. Verify and report
 
-Read back the remote branch or Draft PR. Report repository, branch, commit, PR URL, visibility, validation results, and remaining review steps. Do not mark the publication complete if remote content was not verified.
+Read back repository visibility/default branch, remote publication-branch SHA, Draft PR state/base/head/file list, and local worktree status.
 
-Read [references/permissions-and-safety.md](references/permissions-and-safety.md) for the minimum permission model.
-
-<!-- AI生成，须人工审核 -->
+Report repository, branch, commit, PR URL, visibility, validation results, disclosed risks, and remaining human review. Do not mark publication complete when remote state is unverified.
