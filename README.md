@@ -1,21 +1,14 @@
 # Codex Skills
 
-Private source collection for locally maintained Codex Skills.
+Private source collection containing 30 Codex Skills used in the owner's local environment.
 
-## Skills
+## Layout
 
-- `codex-proxy-repair` — Diagnose and repair Codex proxy inheritance on Windows.
-- `lark-codex-bridge` — Operate the Windows bridge between a Feishu bot and local Codex CLI.
-- `project-feishu-delivery` — Deliver reviewed project outputs to an authorized Feishu folder.
-- `project-feishu-source` — Read authorized Feishu source documents within the active project scope.
-- `publish-codex-skill` — Validate, package, and publish Codex Skills safely.
+Each directory under `skills/` is an independent Skill whose entry point is `SKILL.md`.
+See `SOURCES.md` for provenance, bundled-version information, and publication notes.
 
-## Installation
+## Important
 
-Copy an individual directory from `skills/` to the user Skill directory:
-
-`$HOME/.agents/skills/<skill-name>`
-
-Review each Skill and its dependencies before installation.
-
-AI生成，须人工审核
+This repository is a private backup and synchronization collection. Inclusion does not imply
+authorship or relicensing of OpenAI, plugin-provided, or third-party material. Preserve each
+included license and consult the original source before redistribution.

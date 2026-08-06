@@ -1,4 +1,4 @@
 interface:
-  display_name: "Codex ´úÀíÖØÁ¬ĞŞ¸´"
-  short_description: "Õï¶Ï²¢ĞŞ¸´ Windows Codex ´úÀíÖØÁ¬ÎÊÌâ"
-  default_prompt: "Ê¹ÓÃ $codex-proxy-repair Õï¶Ïµ±Ç° Windows ÉÏ Codex ·´¸´ÖØÁ¬µÄÎÊÌâ¡£"
+  display_name: "Codex ä»£ç†é‡è¿ä¿®å¤"
+  short_description: "è¯Šæ–­ macOS æˆ– Windows çš„ Codex ä»£ç†é‡è¿é—®é¢˜"
+  default_prompt: "ä½¿ç”¨ $codex-proxy-repair è¯Šæ–­å½“å‰ç”µè„‘ä¸Š Codex åå¤é‡è¿æˆ–ä»£ç†ç»§æ‰¿å¤±è´¥çš„é—®é¢˜ã€‚"

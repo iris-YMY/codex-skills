@@ -1,0 +1,6 @@
+interface:
+  display_name: "Presentation Visual Director"
+  short_description: "Improve slide visuals without draft attachments"
+  default_prompt: "Use $presentation-visual-director to define the visual direction, review slide renders, and deliver the PPTX only after approval."
+policy:
+  allow_implicit_invocation: true

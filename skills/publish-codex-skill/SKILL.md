@@ -24,7 +24,7 @@ Keep repository documentation and Plugin manifests outside Skill directories.
 
 ## 2. Preflight
 
-Run `scripts/preflight.ps1` for every selected Skill, passing the `skill-creator` `quick_validate.py` path. It inventories candidate files and flags structural, UTF-8, symlink, nested-repository, cache, credential-shaped, and environment-specific content without printing secret values.
+Run `scripts/preflight.py` for every selected Skill, passing the `skill-creator` `quick_validate.py` path with `--validator-path`. The script automatically prefers `CODEX_SKILL_VALIDATOR_PYTHON` and then the dedicated `~/.codex/venvs/publish-codex-skill` environment; use `--validator-python` only to override that selection. The script is cross-platform and inventories candidate files while flagging structural, UTF-8, symlink, nested-repository, cache, credential-shaped, and environment-specific content without printing secret values.
 
 Do not load the full `skill-creator` instructions for routine publication. Load it only when creating or restructuring a Skill, or when validation fails.
 

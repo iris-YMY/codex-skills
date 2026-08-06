@@ -1,0 +1,4 @@
+interface:
+  display_name: "Consulting Deck Strategist"
+  short_description: "Plan evidence-backed consulting deck storylines"
+  default_prompt: "Structure this business question into an evidence-backed consulting deck blueprint, then route production to Presentations."

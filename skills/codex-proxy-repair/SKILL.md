@@ -1,21 +1,24 @@
 ---
 name: codex-proxy-repair
-description: Diagnose and safely repair repeated Codex reconnecting, sampling-stream disconnects, WebSocket connection failures, or missing proxy inheritance on Windows. Use when Codex Desktop, the IDE extension, or Codex CLI repeatedly shows reconnect attempts such as 1/5 through 5/5, cannot reach chatgpt.com, or needs its HTTP/HTTPS proxy environment verified. Diagnose before changing settings and never guess a proxy port.
+description: Diagnose and safely repair repeated Codex reconnecting, sampling-stream disconnects, WebSocket connection failures, or missing proxy inheritance on macOS or Windows. Use when Codex Desktop, ChatGPT Desktop's Codex surface, the IDE extension, or Codex CLI repeatedly reconnects or cannot reach chatgpt.com. Diagnose before changing settings and never guess a proxy port.
 ---
 
-# Repair Codex proxy connectivity on Windows
+# Repair Codex proxy connectivity
 
-Diagnose the current machine before making any change. Read [references/windows-proxy-repair.md](references/windows-proxy-repair.md) completely and follow its safety boundaries and workflow.
+Detect the host operating system and read exactly one platform reference:
+
+- macOS: [references/macos-proxy-repair.md](references/macos-proxy-repair.md)
+- Windows: [references/windows-proxy-repair.md](references/windows-proxy-repair.md)
 
 ## Required behavior
 
-1. Inspect process, user, and system proxy settings; proxy processes; listening ports; and PID ownership.
+1. Inspect effective proxy variables, system proxy settings, proxy processes, listening ports, and PID ownership before changing anything.
 2. Distinguish HTTP, SOCKS, mixed, control, DNS, and API ports. Never treat a control or DNS port as a proxy port.
-3. Verify the candidate HTTP or mixed proxy with a short-timeout HTTPS or HTTP CONNECT request before modifying settings.
-4. Record and back up existing non-empty user proxy variables before changing them.
-5. Modify user-level variables only after verification. Do not change machine-level variables unless the user explicitly requests it.
-6. Do not reveal or overwrite unrelated credentials, tokens, or configuration.
-7. Stop and report when multiple candidates remain ambiguous.
-8. After changes, re-read the effective values, confirm the proxy still listens, and tell the user to fully restart Codex or VS Code.
+3. Verify a candidate HTTP or mixed proxy with a short-timeout HTTPS or HTTP CONNECT request before modification.
+4. Back up existing non-empty values and modify only the smallest user-scoped configuration proven to be inherited by the installed Codex build.
+5. Do not assume `~/.codex/.env` is read. Use it only after local or official evidence verifies that behavior for the installed version.
+6. Never reveal credentials or overwrite unrelated configuration.
+7. Stop when multiple candidates remain ambiguous.
+8. Re-read effective values, confirm the port still listens, and require a full application restart before final verification.
 
-Treat writes to environment variables or system configuration as state-changing actions that require the user's authorization when it has not already been given.
+Writes to environment variables, launch settings, or configuration are state changes and require authorization unless already explicitly requested.

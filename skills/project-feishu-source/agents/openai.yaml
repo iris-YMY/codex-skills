@@ -1,4 +1,4 @@
 interface:
   display_name: "Project Feishu Source"
-  short_description: "Read authorized Feishu sources by project"
+  short_description: "Read and analyze current-project Feishu sources"
   default_prompt: "Use $project-feishu-source to find and read the relevant authorized Feishu source documents for this project."

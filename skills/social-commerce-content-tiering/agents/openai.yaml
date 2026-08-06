@@ -1,0 +1,4 @@
+interface:
+  display_name: "社交电商商品内容分层"
+  short_description: "基于商品生命周期、内容价值和语料证据生成N/S/A/B内容分层与素材矩阵"
+  default_prompt: "请基于商品资料和可用语料，完成N/S/A/B内容分层、素材产能分配、六类内容矩阵及判断依据输出。"

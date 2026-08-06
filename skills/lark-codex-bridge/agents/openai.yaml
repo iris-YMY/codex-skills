@@ -1,4 +1,4 @@
 interface:
-  display_name: "·ÉÊé Codex Bridge"
-  short_description: "²¿ÊğÓëÑéÊÕ Windows ·ÉÊé Codex Ë½ÁÄÇÅ½Ó"
-  default_prompt: "Ê¹ÓÃ $lark-codex-bridge ²¿Êğ»òÅÅ²é Windows ·ÉÊé Codex Bridge¡£"
+  display_name: "é£ä¹¦ Codex Bridge"
+  short_description: "éƒ¨ç½²å’Œæ’æŸ¥ macOS æˆ– Windows é£ä¹¦ Codex ç§èŠæ¡¥æ¥"
+  default_prompt: "ä½¿ç”¨ $lark-codex-bridge éƒ¨ç½²ã€éªŒè¯æˆ–æ’æŸ¥å½“å‰ç”µè„‘ä¸Šçš„é£ä¹¦ Codex Bridgeã€‚"

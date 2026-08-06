@@ -1,11 +1,13 @@
 ---
 name: project-feishu-source
-description: Find, read, and fetch Feishu cloud documents only from the source folders explicitly authorized for the current project. Use when the user asks to consult, search, obtain, analyze, summarize, or use Feishu documents as project inputs. Enforce project AGENTS.md rules, project-to-folder matching, least-content retrieval, source immutability, bounded spreadsheet reads, and source traceability.
+description: Read, search, inspect, fetch, summarize, or analyze Feishu cloud documents as inputs for the current project. Use for any request to consult project materials, source documents, spreadsheets, references, briefs, data, or assets stored in Feishu. In a project workspace, use this Skill for all source-reading tasks. Do not use it for uploading project outputs, connector administration, folder authorization changes, or Lark bot operations.
 ---
 
 # Read project-scoped Feishu sources
 
 Treat the current workspace root as the project boundary. Read the applicable `AGENTS.md` before accessing Feishu and obey stricter project rules.
+
+Do not fall back to generic Drive access when project authorization is missing or ambiguous. Stop and report the missing mapping.
 
 ## Resolve the source scope
 
