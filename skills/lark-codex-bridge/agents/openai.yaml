@@ -1,0 +1,4 @@
+interface:
+  display_name: "飞书 Codex Bridge"
+  short_description: "部署和排查 macOS 或 Windows 飞书 Codex 私聊桥接"
+  default_prompt: "使用 $lark-codex-bridge 部署、验证或排查当前电脑上的飞书 Codex Bridge。"

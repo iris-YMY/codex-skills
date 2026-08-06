@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex 代理重连修复"
+  short_description: "诊断 macOS 或 Windows 的 Codex 代理重连问题"
+  default_prompt: "使用 $codex-proxy-repair 诊断当前电脑上 Codex 反复重连或代理继承失败的问题。"
