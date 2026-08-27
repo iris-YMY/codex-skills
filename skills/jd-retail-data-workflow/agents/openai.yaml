@@ -1,0 +1,6 @@
+interface:
+  display_name: "京东零售数据工作流"
+  short_description: "整合京东商智、官方开放平台与导出文件，完成可追溯取数、校验及商品趋势分析"
+  default_prompt: "Use $jd-retail-data-workflow to plan a JD data pull and produce a source-linked evidence chain."
+policy:
+  allow_implicit_invocation: true
