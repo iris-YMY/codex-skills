@@ -1,6 +1,6 @@
 # Codex Skills
 
-Private source collection containing 30 Codex Skills used in the owner's local environment.
+Private source collection containing 31 Codex Skills used in the owner's local environment.
 
 ## Layout
 

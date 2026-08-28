@@ -35,6 +35,7 @@ grant redistribution rights beyond licenses included with individual Skills.
 - `codex-proxy-repair`
 - `codex-rehome`
 - `consulting-deck-strategist`
+- `jd-retail-data-workflow`
 - `lark-codex-bridge`
 - `presentation-visual-director`
 - `project-feishu-delivery`
